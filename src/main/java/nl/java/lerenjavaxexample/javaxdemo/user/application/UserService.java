@@ -1,6 +1,5 @@
 package nl.java.lerenjavaxexample.javaxdemo.user.application;
 
-import jakarta.transaction.Transactional;
 import nl.java.lerenjavaxexample.javaxdemo.user.application.dto.UserDto;
 import nl.java.lerenjavaxexample.javaxdemo.user.application.dto.UserRetrieveDto;
 import nl.java.lerenjavaxexample.javaxdemo.user.application.mapper.UserMapper;
@@ -9,6 +8,7 @@ import nl.java.lerenjavaxexample.javaxdemo.user.domain.User;
 import nl.java.lerenjavaxexample.javaxdemo.user.presentation.exception.BadRequestException;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.Optional;
 
 @Service
