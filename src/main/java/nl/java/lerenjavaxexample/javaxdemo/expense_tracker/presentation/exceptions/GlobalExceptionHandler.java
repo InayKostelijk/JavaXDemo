@@ -34,7 +34,7 @@ public class GlobalExceptionHandler {
                                 error.getField(),
                                 error.getDefaultMessage()
                         ))
-                        .collect(Collectors.toList()); // ✅ Java 8 fix
+                        .collect(Collectors.toList());
 
         CustomResponse response =
                 new CustomResponse(
@@ -50,7 +50,7 @@ public class GlobalExceptionHandler {
 
         CustomResponse error = new CustomResponse(
                 ex.getMessage(),
-                new ArrayList<>() // ✅ Java 8 fix
+                new ArrayList<>()
         );
 
         return new ResponseEntity<>(error, HttpStatus.BAD_REQUEST);

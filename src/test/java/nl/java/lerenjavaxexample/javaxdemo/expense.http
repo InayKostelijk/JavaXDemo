@@ -1,0 +1,48 @@
+GET http://localhost:8080/api/expenses
+
+###
+
+GET http://localhost:8080/api/expenses/1
+
+###
+POST http://localhost:8080/api/expenses
+Content-Type: application/json
+
+{
+  "item": "medicine",
+  "category": "HEALTH",
+  "price": 1,
+  "userId": 1
+}
+###
+POST http://localhost:8080/api/expenses
+Content-Type: application/json
+
+{
+  "item": "medicine",
+  "category": "HEALTH",
+  "price": 1,
+  "userId": 1
+}
+###
+POST http://localhost:8080/api/expenses
+Content-Type: application/json
+
+{
+  "item": "big mac",
+  "category": "HEALTH",
+  "price": 15,
+  "userId": 2
+}
+###
+PUT http://localhost:8080/api/expenses/1
+Content-Type: application/json
+
+{
+  "item": "belastingdienst",
+  "category": "TAXES",
+  "price": 100,
+  "userId": 1
+}
+###
+DELETE http://localhost:8080/api/expenses/1
