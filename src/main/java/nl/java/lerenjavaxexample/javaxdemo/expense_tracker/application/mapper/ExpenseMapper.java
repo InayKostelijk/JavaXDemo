@@ -13,7 +13,6 @@ public class ExpenseMapper {
         }
 
         return new ExpenseDto(
-                expense.getId(),
                 expense.getUser() != null ? expense.getUser().getId() : null,
                 expense.getItem(),
                 expense.getCategory(),

@@ -5,7 +5,8 @@ GET http://localhost:8080/api/expenses
 GET http://localhost:8080/api/expenses/1
 
 ###
-POST http://localhost:8080/api/expenses
+#Dit mag niet in springboot 3
+POST http://localhost:8080/api/expenses/
 Content-Type: application/json
 
 {

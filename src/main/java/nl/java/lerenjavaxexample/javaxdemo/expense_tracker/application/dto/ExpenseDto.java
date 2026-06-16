@@ -8,9 +8,6 @@ import java.time.LocalDateTime;
 public class ExpenseDto {
 
     @NotNull
-    private Long id;
-
-    @NotNull
     private Long userId;
 
     @NotNull
@@ -27,13 +24,12 @@ public class ExpenseDto {
     public ExpenseDto() {
     }
 
-    public ExpenseDto(Long id,
+    public ExpenseDto(
                       Long userId,
                       String item,
                       ExpenseCategory category,
                       Double price,
                       LocalDateTime createdAt) {
-        this.id = id;
         this.userId = userId;
         this.item = item;
         this.category = category;
@@ -41,9 +37,6 @@ public class ExpenseDto {
         this.createdAt = createdAt;
     }
 
-    public Long getId() {
-        return id;
-    }
 
     public Long getUserId() {
         return userId;
