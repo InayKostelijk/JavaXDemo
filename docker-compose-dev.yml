@@ -1,0 +1,19 @@
+  #This file is only for running the database so that u can develop faster by running the application locally
+
+  services:
+    postgres:
+      image: postgres:16
+      container_name: postgres_dbJavaXDemo
+      restart: always
+      environment:
+        POSTGRES_USER: admin123
+        POSTGRES_PASSWORD: admin123
+        POSTGRES_DB: hu-s4-onderzoekDatabase
+      volumes:
+        - ./database/teamNames.sql:/docker-entrypoint-initdb.d/init.sql
+        - ./postgres_data:/var/lib/postgresql/data
+      ports:
+        - "25432:5432"
+
+  volumes:
+    postgres_data:
