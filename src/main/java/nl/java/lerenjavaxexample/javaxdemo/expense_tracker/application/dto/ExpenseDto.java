@@ -2,7 +2,7 @@ package nl.java.lerenjavaxexample.javaxdemo.expense_tracker.application.dto;
 
 import nl.java.lerenjavaxexample.javaxdemo.expense_tracker.domain.enums.ExpenseCategory;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 import java.time.LocalDateTime;
 
 public class ExpenseDto {

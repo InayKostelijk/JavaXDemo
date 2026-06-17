@@ -10,21 +10,27 @@ import nl.java.lerenjavaxexample.javaxdemo.expense_tracker.presentation.exceptio
 import nl.java.lerenjavaxexample.javaxdemo.expense_tracker.presentation.exceptions.ResourceNotFoundException;
 import nl.java.lerenjavaxexample.javaxdemo.user.data.UserRepository;
 import nl.java.lerenjavaxexample.javaxdemo.user.domain.User;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.junit.jupiter.MockitoExtension;
+import org.mockito.junit.jupiter.MockitoSettings;
+import org.mockito.quality.Strictness;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.Assert.*;
-        import static org.mockito.Mockito.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
-@RunWith(MockitoJUnitRunner.class)
+@ExtendWith(MockitoExtension.class)
+@MockitoSettings(strictness = Strictness.WARN)
 public class ExpenseServiceUnitTest {
 
     @Mock
@@ -43,7 +49,7 @@ public class ExpenseServiceUnitTest {
     private ExpenseDto dto;
     private User user;
 
-    @Before
+    @BeforeEach
     public void setUp() {
         user = new User();
 
@@ -86,11 +92,13 @@ public class ExpenseServiceUnitTest {
         verify(expenseRepository).findById(1L);
     }
 
-    @Test(expected = ResourceNotFoundException.class)
+    @Test
     public void shouldThrowWhenExpenseNotFound() {
-        when(expenseRepository.findById(1L)).thenReturn(Optional.empty());
+        assertThrows(ResourceNotFoundException.class, () -> {
+            when(expenseRepository.findById(1L)).thenReturn(Optional.empty());
 
-        expenseService.getExpenseById(1L);
+            expenseService.getExpenseById(1L);
+        });
     }
 
     @Test
@@ -104,19 +112,23 @@ public class ExpenseServiceUnitTest {
         verify(expenseRepository).save(expense);
     }
 
-    @Test(expected = BadRequestException.class)
+    @Test
     public void shouldThrowWhenExpenseMissingOnEdit() {
-        when(expenseRepository.findById(1L)).thenReturn(Optional.empty());
+        assertThrows(BadRequestException.class, () -> {
+            when(expenseRepository.findById(1L)).thenReturn(Optional.empty());
 
-        expenseService.editExpenseById(1L, dto);
+            expenseService.editExpenseById(1L, dto);
+        });
     }
 
-    @Test(expected = ResourceNotFoundException.class)
+    @Test
     public void shouldThrowWhenUserMissingOnEdit() {
-        when(expenseRepository.findById(1L)).thenReturn(Optional.of(expense));
-        when(userRepository.findById(1L)).thenReturn(Optional.empty());
+        assertThrows(ResourceNotFoundException.class, () -> {
+            when(expenseRepository.findById(1L)).thenReturn(Optional.of(expense));
+            when(userRepository.findById(1L)).thenReturn(Optional.empty());
 
-        expenseService.editExpenseById(1L, dto);
+            expenseService.editExpenseById(1L, dto);
+        });
     }
 
     @Test
@@ -128,10 +140,12 @@ public class ExpenseServiceUnitTest {
         verify(expenseRepository).delete(expense);
     }
 
-    @Test(expected = BadRequestException.class)
+    @Test
     public void shouldThrowWhenDeletingMissingExpense() {
-        when(expenseRepository.findById(1L)).thenReturn(Optional.empty());
+        assertThrows(BadRequestException.class, () -> {
+            when(expenseRepository.findById(1L)).thenReturn(Optional.empty());
 
-        expenseService.deleteExpense(1L);
+            expenseService.deleteExpense(1L);
+        });
     }
 }
