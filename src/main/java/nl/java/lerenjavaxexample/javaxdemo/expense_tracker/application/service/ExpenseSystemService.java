@@ -9,7 +9,7 @@ import nl.java.lerenjavaxexample.javaxdemo.user.data.UserRepository;
 import nl.java.lerenjavaxexample.javaxdemo.user.domain.User;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 
 @Service
 @Transactional

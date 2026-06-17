@@ -4,9 +4,11 @@ import nl.java.lerenjavaxexample.javaxdemo.expense_tracker.domain.Expense;
 import nl.java.lerenjavaxexample.javaxdemo.expense_tracker.domain.ExpenseSystem;
 import nl.java.lerenjavaxexample.javaxdemo.expense_tracker.domain.enums.ExpenseCategory;
 import nl.java.lerenjavaxexample.javaxdemo.user.domain.User;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class ExpenseSystemUnitTest {
 
