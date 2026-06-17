@@ -1,0 +1,71 @@
+{
+  "schemaVersion": "1.0",
+  "generatedBy": "planning-coordinator",
+  "generatedAt": "2026-06-17T00:00:00Z",
+  "tasks": [
+    {
+      "id": "T1-java-version-upgrade",
+      "title": "Upgrade Java Version",
+      "category": "Java Version Upgrade",
+      "solution": "Upgrade Java Version [kbId: java-version-upgrade]",
+      "description": "Upgrade the project's JDK to the latest LTS (e.g., OpenJDK 17 or 21 depending on compatibility) and update CI to include the new JDK. Fix compilation/runtime incompatibilities.",
+      "effort": "large",
+      "dependencies": [],
+      "assignees": [],
+      "acceptanceCriteria": [
+        "Project builds successfully with the target JDK",
+        "Unit tests pass or regressions are documented",
+        "Application starts and basic smoke tests pass"
+      ],
+      "branchNaming": "upgrade/T1-java-version-upgrade"
+    },
+    {
+      "id": "T2-spring-framework-upgrade",
+      "title": "Upgrade Spring Framework Version",
+      "category": "Framework Upgrade (Spring Framework)",
+      "solution": "Upgrade Spring Framework Version [kbId: spring-framework-upgrade]",
+      "description": "Upgrade Spring Framework artifacts to a supported release compatible with the target Spring Boot and JDK. Follow incremental version bumps where needed and resolve deprecated APIs.",
+      "effort": "medium",
+      "dependencies": ["T1-java-version-upgrade"],
+      "assignees": [],
+      "acceptanceCriteria": [
+        "Project builds cleanly with upgraded Spring Framework",
+        "Integration tests covering core Spring behaviors pass",
+        "No runtime errors introduced by framework changes"
+      ],
+      "branchNaming": "upgrade/T2-spring-framework-upgrade"
+    },
+    {
+      "id": "T3-spring-boot-upgrade",
+      "title": "Upgrade Spring Boot Version",
+      "category": "Framework Upgrade (Spring Boot)",
+      "solution": "Upgrade Spring Boot Version [kbId: spring-boot-upgrade]",
+      "description": "Upgrade Spring Boot to a supported version aligned with the target Spring Framework and JDK. Update starter dependencies and configuration changes required by the new Boot version.",
+      "effort": "medium",
+      "dependencies": ["T1-java-version-upgrade", "T2-spring-framework-upgrade"],
+      "assignees": [],
+      "acceptanceCriteria": [
+        "Application starts under the new Spring Boot version",
+        "All configuration properties are validated and migrated",
+        "Smoke tests and integration scenarios pass"
+      ],
+      "branchNaming": "upgrade/T3-spring-boot-upgrade"
+    },
+    {
+      "id": "T4-deprecated-api-upgrade",
+      "title": "Upgrade Deprecated APIs (java.annotation removal)",
+      "category": "Deprecated APIs",
+      "solution": "Upgrade Deprecated APIs [kbId: deprecated-api-upgrade]",
+      "description": "Replace or add dependencies to address removal of `java.annotation` (Common Annotations). Prefer migrating to `jakarta.annotation` or adding a compatible `javax.annotation` artifact. Update imports and usages as required.",
+      "effort": "small",
+      "dependencies": ["T1-java-version-upgrade"],
+      "assignees": [],
+      "acceptanceCriteria": [
+        "No references to removed `java.annotation` module in compiled artifacts",
+        "Compilation and unit tests succeed after replacements",
+        "Behavior verified via smoke tests"
+      ],
+      "branchNaming": "upgrade/T4-deprecated-api-upgrade"
+    }
+  ]
+}

@@ -3,7 +3,7 @@ package nl.java.lerenjavaxexample.javaxdemo.expense_tracker.domain;
 import nl.java.lerenjavaxexample.javaxdemo.expense_tracker.domain.enums.ExpenseCategory;
 import nl.java.lerenjavaxexample.javaxdemo.user.domain.User;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
