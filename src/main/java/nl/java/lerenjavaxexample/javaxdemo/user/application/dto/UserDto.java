@@ -1,6 +1,6 @@
 package nl.java.lerenjavaxexample.javaxdemo.user.application.dto;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 public class UserDto {
 

@@ -4,7 +4,7 @@ package nl.java.lerenjavaxexample.javaxdemo.expense_tracker.domain;
 import nl.java.lerenjavaxexample.javaxdemo.expense_tracker.data.ExpenseSystemRepository;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.PostConstruct;
+import jakarta.annotation.PostConstruct;
 
 @Component
 public class DataInitializer {

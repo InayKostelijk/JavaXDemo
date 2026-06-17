@@ -1,6 +1,6 @@
 package nl.java.lerenjavaxexample.javaxdemo.user.domain;
 
-import javax.persistence.*;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name="expense_user")

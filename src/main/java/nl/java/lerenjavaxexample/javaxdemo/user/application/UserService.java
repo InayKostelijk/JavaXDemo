@@ -8,7 +8,7 @@ import nl.java.lerenjavaxexample.javaxdemo.user.domain.User;
 import nl.java.lerenjavaxexample.javaxdemo.user.presentation.exception.BadRequestException;
 import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
+import jakarta.transaction.Transactional;
 import java.util.Optional;
 
 @Service
